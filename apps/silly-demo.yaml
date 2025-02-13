@@ -1,0 +1,26 @@
+apiVersion: devopstoolkit.live/v1alpha1
+kind: AppClaim
+metadata:
+  name: silly-demo
+  labels:
+    app-owner: vfarcic
+spec:
+  id: silly-demo
+  compositionSelector:
+    matchLabels:
+      type: backend
+      location: local
+  parameters:
+    namespace: a-team
+    image: ghcr.io/jonaygarciav/idp-full-app
+    tag: FIXME
+    port: 8080
+    host: silly-demo.34.236.240.230.nip.io
+    ingressClassName: contour
+    db:
+      secret: silly-demo-db
+    repository:
+      enabled: true
+      name: idp-full-app
+    ci:
+      enabled: true
